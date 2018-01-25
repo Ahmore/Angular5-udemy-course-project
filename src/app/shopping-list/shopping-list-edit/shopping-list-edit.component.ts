@@ -15,9 +15,11 @@ export class ShoppingListEditComponent implements OnInit {
     }
 
     onAdd(name, quantity) {
-        this.shoppingListService.addIngredient(new Ingredient(
-            name,
-            quantity
-        ));
+        this.shoppingListService.addIngredient(
+            new Ingredient(
+                name,
+                quantity
+            )
+        );
     }
 }

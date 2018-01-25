@@ -22,4 +22,9 @@ export class ShoppingListService {
         this.ingredients.push(ingredient);
         this.onIngredientsChanged.emit(this.getIngredients());
     }
+
+    public addIngredients(ingredients: Ingredient[]): void {
+        this.ingredients.push(...ingredients);
+        this.onIngredientsChanged.emit(this.getIngredients());
+    }
 }
