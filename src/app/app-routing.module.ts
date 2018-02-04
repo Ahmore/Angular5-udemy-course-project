@@ -2,10 +2,9 @@ import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {ShoppingListComponent} from "./shopping-list/shopping-list.component";
 import {RecipesComponent} from "./recipes/recipes.component";
-import {RecipeListComponent} from "./recipes/recipe-list/recipe-list.component";
-import {RecipeAddComponent} from "./recipes/recipe-add/recipe-add.component";
 import {RecipeDetailComponent} from "./recipes/recipe-detail/recipe-detail.component";
 import {RecipeHomeComponent} from "./recipes/recipe-home/recipe-home.component";
+import {RecipeEditComponent} from "./recipes/recipe-edit/recipe-edit.component";
 
 const appRoutes = [
     {
@@ -25,7 +24,11 @@ const appRoutes = [
 
             {
                 path: "add",
-                component: RecipeAddComponent
+                component: RecipeEditComponent
+            },
+            {
+                path: ":id/edit",
+                component: RecipeEditComponent
             },
 
             {
