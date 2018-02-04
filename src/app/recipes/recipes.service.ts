@@ -1,14 +1,14 @@
+import {Injectable} from "@angular/core";
+
 import {Recipe} from "./recipe.model";
-import {EventEmitter, Injectable} from "@angular/core";
 import {Ingredient} from "../shared/ingredient.model";
 import {ShoppingListService} from "../shopping-list/shopping-list.service";
 
 @Injectable()
 export class RecipesService {
-    public onRecipeSelect = new EventEmitter<Recipe>();
-
     private recipes: Recipe[] = [
         new Recipe(
+            1,
             "New recipe",
             "There is the best recipe",
             "https://paprikaapp.com/media/web/images/help/windows/recipe.png",
@@ -19,6 +19,7 @@ export class RecipesService {
         ),
 
         new Recipe(
+            2,
             "Another recipe",
             "There is the best recipe",
             "https://paprikaapp.com/media/web/images/help/windows/recipe.png",
@@ -34,6 +35,14 @@ export class RecipesService {
 
     public getRecipes(): Recipe[] {
         return this.recipes.slice();
+    }
+
+    public getRecipe(id: number): Recipe {
+        return this.recipes.find(
+            (recipe: Recipe) => {
+                return (recipe.id === id);
+            }
+        );
     }
 
     public addIngredientsToShoppingList(ingredients: Ingredient[]): void {

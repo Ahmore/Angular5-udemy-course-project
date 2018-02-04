@@ -6,10 +6,5 @@ import {Component} from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    route: string = "";
     title = 'app';
-
-    onRoute(route: string) {
-        this.route = route;
-    }
 }
