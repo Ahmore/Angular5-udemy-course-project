@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RecipesService} from "../recipes/recipes.service";
 import {Recipe} from "../recipes/recipe.model";
+import {AuthService} from "../auth/auth.service";
 
 @Component({
     selector: 'app-header',
@@ -9,7 +10,8 @@ import {Recipe} from "../recipes/recipe.model";
 })
 export class HeaderComponent implements OnInit {
     constructor(
-        private recipesService: RecipesService
+        private recipesService: RecipesService,
+        private authService: AuthService
     ) {
     }
 
@@ -30,5 +32,9 @@ export class HeaderComponent implements OnInit {
                 console.log(recipes);
             }
         );
+    }
+
+    onLogout() {
+        this.authService.signout();
     }
 }
