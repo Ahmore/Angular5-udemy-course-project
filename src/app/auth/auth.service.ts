@@ -19,6 +19,8 @@ export class AuthService {
             (response) => {
                 this.updateToken();
                 this.router.navigate(["/recipes"]);
+
+                return response;
             }
         )
     }
