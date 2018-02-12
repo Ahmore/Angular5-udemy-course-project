@@ -18,7 +18,7 @@ export class AuthService {
         return firebase.auth().signInWithEmailAndPassword(email, password).then(
             (response) => {
                 this.updateToken();
-                this.router.navigate(["/recipes"]);
+                this.router.navigate(["/"]);
 
                 return response;
             }
@@ -29,7 +29,7 @@ export class AuthService {
         firebase.auth().signOut();
         this.token = null;
 
-        this.router.navigate(["/recipes"]);
+        this.router.navigate(["/"]);
     }
 
     private updateToken(): Promise<any> {
