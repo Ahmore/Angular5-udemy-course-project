@@ -1,9 +1,10 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
+import {HomeComponent} from "./home/home.component";
 
 const appRoutes: Routes = [
     { path: "recipes", loadChildren: "./recipes/recipes.module#RecipesModule" },
-    { path: '', redirectTo: '/recipes', pathMatch: "full" }
+    { path: '', component: HomeComponent, pathMatch: "full" }
 ];
 
 @NgModule({
