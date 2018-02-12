@@ -29,13 +29,7 @@ import {CoreModule} from "./core/core.module";
         AppRoutingModule,
         CoreModule
     ],
-    providers: [
-        ShoppingListService,
-        RecipesService,
-        RecipesStorageService,
-        AuthService,
-        AuthGuard
-    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {
