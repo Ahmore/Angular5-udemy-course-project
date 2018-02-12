@@ -5,6 +5,7 @@ import {Ingredient} from "../shared/ingredient.model";
 import {ShoppingListService} from "../shopping-list/shopping-list.service";
 import {Subject, Observable} from "rxjs";
 import {RecipesStorageService} from "../shared/storages/recipes-storage.service";
+import "rxjs/add/operator/do";
 
 @Injectable()
 export class RecipesService {
@@ -72,15 +73,11 @@ export class RecipesService {
     }
 
     public loadRecipes(): Observable<Recipe[]> {
-        const observable = this.recipesStorage.loadRecipes();
-
-        observable.subscribe(
+        return this.recipesStorage.loadRecipes().do(
             (recipes: Recipe[]) => {
                 this.recipes = recipes;
                 this.onRecipesChanged.next(this.getRecipes());
             }
         );
-
-        return observable;
     }
 }

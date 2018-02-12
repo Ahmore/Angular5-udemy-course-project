@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 
 import {DropdownDirective} from "./dropdown.directive";
 import {CommonModule} from "@angular/common";
-import {HttpModule} from "@angular/http";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -10,7 +10,7 @@ import {HttpModule} from "@angular/http";
     ],
 
     imports: [
-        HttpModule
+        HttpClientModule
     ],
 
     exports: [

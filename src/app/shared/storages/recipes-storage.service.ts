@@ -1,36 +1,23 @@
 import {Injectable} from "@angular/core";
-import {Http, Response} from "@angular/http";
 import {Recipe} from "../../recipes/recipe.model";
 import {Observable} from "rxjs/Observable";
 import "rxjs/Rx"
-import {AuthService} from "../../auth/auth.service";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class RecipesStorageService {
     constructor(
-        private authService: AuthService,
-        private httpService: Http
+        private httpClientService: HttpClient
     ) {}
 
     saveRecipes(recipes: Recipe[]): Observable<Recipe[]> {
-        const token: string = this.authService.getToken();
-
-        return this.httpService.put("https://udemy-angular5-532e4.firebaseio.com/recipes.json?auth=" + token, recipes)
-            .map(
-                (response: Response) => {
-                    return response.json();
-                }
-            )
+        return this.httpClientService.put<Recipe[]>("https://udemy-angular5-532e4.firebaseio.com/recipes.json", recipes);
     }
 
     loadRecipes(): Observable<Recipe[]> {
-        const token: string = this.authService.getToken();
-
-        return this.httpService.get("https://udemy-angular5-532e4.firebaseio.com/recipes.json?auth=" + token)
+        return this.httpClientService.get<Recipe[]>("https://udemy-angular5-532e4.firebaseio.com/recipes.json")
             .map(
-                (response: Response) => {
-                    const recipes: Recipe[] = response.json();
-
+                (recipes: Recipe[]) => {
                     for (let recipe of recipes) {
                         if (!recipe["ingredients"]) {
                             recipe["ingredients"] = [];
